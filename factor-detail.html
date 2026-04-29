@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Factor Tearsheet — Alpha Factor</title>
+  <link rel="stylesheet" href="../css/main.css" />
+  <style>
+    .tearsheet-header { background: var(--graphite); padding: 60px 0 48px; }
+    .tearsheet-header h1 { color: var(--white); margin-bottom: 12px; }
+    .tearsheet-header p { color: rgba(255,255,255,0.65); max-width: 620px; }
+    .perf-stat { text-align: center; padding: 20px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--white); }
+    .perf-stat .val { font-family: var(--font-mono); font-size: 1.6rem; font-weight: 500; color: var(--graphite); }
+    .perf-stat .lbl { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); margin-top: 4px; }
+    .val.pos { color: var(--green); }
+    .val.neg { color: #E74C3C; }
+    .spec-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: .875rem; }
+    .spec-row:last-child { border-bottom: none; }
+    .spec-label { color: var(--text-muted); font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; }
+    .spec-value { color: var(--graphite); font-family: var(--font-mono); font-size: .85rem; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="../index.html" class="nav-logo">Alpha<span>Factor</span></a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="catalog.html" class="active">Factor Data</a>
+      <a href="blog.html">Research Notes</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html" style="color:var(--text-muted);font-size:.875rem;padding:8px 12px;">Login</a>
+      <a href="contact.html" class="btn btn-primary btn-sm nav-cta">Institutional Inquiry</a>
+    </div>
+  </div>
+</nav>
+
+<div class="tearsheet-header">
+  <div class="container">
+    <div class="breadcrumb" style="color:rgba(255,255,255,0.4);">
+      <a href="../index.html" style="color:rgba(255,255,255,0.4);">Home</a>
+      <span class="breadcrumb-sep">/</span>
+      <a href="catalog.html" style="color:rgba(255,255,255,0.4);">Factor Data</a>
+      <span class="breadcrumb-sep">/</span>
+      <span style="color:rgba(255,255,255,0.7);" id="factor-title-breadcrumb">Cross-Sectional Momentum</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:14px;">
+      <span class="factor-tag momentum" id="factor-tag-label">Momentum</span>
+      <span class="validated-badge">✓ Out-of-Sample Validated</span>
+    </div>
+    <h1 id="factor-main-title">Cross-Sectional Momentum</h1>
+    <p id="factor-main-desc">Ranks assets by trailing 12-month risk-adjusted returns, skipping the most recent month to avoid short-term reversal contamination. Sector-neutral construction applied at each rebalance date.</p>
+  </div>
+</div>
+
+<section class="section" style="background:var(--white);">
+  <div class="container">
+
+    <!-- Performance summary stats -->
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:40px;" id="perf-stats">
+      <div class="perf-stat"><div class="val pos" id="stat-sharpe">0.72</div><div class="lbl">OOS Sharpe</div></div>
+      <div class="perf-stat"><div class="val pos" id="stat-ann-ret">8.4%</div><div class="lbl">Ann. Return</div></div>
+      <div class="perf-stat"><div class="val pos" id="stat-ic">0.041</div><div class="lbl">Avg IC</div></div>
+      <div class="perf-stat"><div class="val neg" id="stat-maxdd">-18.3%</div><div class="lbl">Max Drawdown</div></div>
+      <div class="perf-stat"><div class="val" id="stat-vol">11.6%</div><div class="lbl">Ann. Volatility</div></div>
+      <div class="perf-stat"><div class="val" id="stat-calmar">0.46</div><div class="lbl">Calmar Ratio</div></div>
+    </div>
+
+    <!-- Charts row -->
+    <div style="margin-bottom:32px;">
+      <div class="tabs" data-group="charts">
+        <button class="tab-btn active" data-tab="equity" data-group="charts">Equity Curve</button>
+        <button class="tab-btn" data-tab="drawdown" data-group="charts">Drawdown</button>
+        <button class="tab-btn" data-tab="sharpe" data-group="charts">Rolling Sharpe</button>
+        <button class="tab-btn" data-tab="heatmap" data-group="charts">Monthly Returns</button>
+        <button class="tab-btn" data-tab="spread" data-group="charts">Factor Spread</button>
+        <button class="tab-btn" data-tab="turnover" data-group="charts">Turnover</button>
+      </div>
+
+      <div class="tab-panel active" data-group="charts" data-tab="equity">
+        <div class="chart-container">
+          <div class="chart-title">Cumulative Return — Backtested (Synthetic, Illustrative)</div>
+          <div class="chart-wrap"><canvas id="chart-equity"></canvas></div>
+        </div>
+      </div>
+      <div class="tab-panel" data-group="charts" data-tab="drawdown">
+        <div class="chart-container">
+          <div class="chart-title">Drawdown from Peak (%)</div>
+          <div class="chart-wrap"><canvas id="chart-dd"></canvas></div>
+        </div>
+      </div>
+      <div class="tab-panel" data-group="charts" data-tab="sharpe">
+        <div class="chart-container">
+          <div class="chart-title">Rolling 12-Month Sharpe Ratio</div>
+          <div class="chart-wrap"><canvas id="chart-sharpe"></canvas></div>
+        </div>
+      </div>
+      <div class="tab-panel" data-group="charts" data-tab="heatmap">
+        <div class="chart-container" style="overflow:auto;">
+          <div class="chart-title">Monthly Returns Heatmap (%)</div>
+          <div class="chart-wrap"><canvas id="chart-heatmap"></canvas></div>
+        </div>
+      </div>
+      <div class="tab-panel" data-group="charts" data-tab="spread">
+        <div class="chart-container">
+          <div class="chart-title">Factor Spread (Top Quintile vs Bottom Quintile)</div>
+          <div class="chart-wrap"><canvas id="chart-spread"></canvas></div>
+        </div>
+      </div>
+      <div class="tab-panel" data-group="charts" data-tab="turnover">
+        <div class="chart-container">
+          <div class="chart-title">Weekly Portfolio Turnover (%)</div>
+          <div class="chart-wrap"><canvas id="chart-turnover"></canvas></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detail: 2-col layout -->
+    <div class="grid-2" style="gap:40px;align-items:start;">
+
+      <!-- Left: factor specs + description -->
+      <div>
+        <h3 style="margin-bottom:20px;">Factor Specifications</h3>
+        <div class="card-flat" style="margin-bottom:24px;">
+          <div class="spec-row"><span class="spec-label">Category</span><span class="spec-value" id="spec-cat">Momentum</span></div>
+          <div class="spec-row"><span class="spec-label">Universe</span><span class="spec-value" id="spec-uni">Large-cap equity (top 1,000 by market cap)</span></div>
+          <div class="spec-row"><span class="spec-label">Rebalance Frequency</span><span class="spec-value" id="spec-reb">Monthly, close of first trading day</span></div>
+          <div class="spec-row"><span class="spec-label">Signal Window</span><span class="spec-value" id="spec-win">12 months trailing, skip 1 month</span></div>
+          <div class="spec-row"><span class="spec-label">Historical Sample</span><span class="spec-value" id="spec-hist">Jan 2023 – Dec 2024 (Individual tier)</span></div>
+          <div class="spec-row"><span class="spec-label">Neutralisation</span><span class="spec-value" id="spec-neut">Sector-neutral (GICS Level 1)</span></div>
+          <div class="spec-row"><span class="spec-label">Winsorisation</span><span class="spec-value" id="spec-wins">1st / 99th percentile</span></div>
+          <div class="spec-row"><span class="spec-label">Delivery Formats</span><span class="spec-value">CSV · XLSX · Parquet</span></div>
+        </div>
+
+        <h4 style="margin-bottom:12px;">Economic Rationale</h4>
+        <p style="font-size:.875rem;margin-bottom:14px;" id="factor-rationale">The momentum premium is one of the most replicated anomalies in empirical asset pricing. Assets that have outperformed in the recent past tend to continue outperforming over a medium horizon (1–12 months). The effect is attributed to behavioural mechanisms — underreaction to news, investor herding — as well as structural frictions that slow arbitrage.</p>
+        <p style="font-size:.875rem;margin-bottom:14px;">The exclusion of the most recent month reduces contamination from microstructure effects and short-term reversal, which are well-documented at the one-month horizon. Sector neutralisation isolates stock-level momentum from industry-level return effects, which have a distinct and separately estimable signal.</p>
+
+        <h4 style="margin-bottom:12px;margin-top:20px;">Validation Notes</h4>
+        <div class="warning-box" style="margin-bottom:14px;">
+          <p style="font-size:.85rem;margin:0;"><strong>Known Failure Mode:</strong> Momentum strategies exhibit "crash risk" following sharp market recoveries. The factor can suffer significant losses in periods of rapid regime reversal (e.g., March–May 2009, April 2020). Users should consider conditioning on volatility regime when sizing momentum exposure.</p>
+        </div>
+        <p style="font-size:.875rem;">Out-of-sample testing conducted on data from Jan 2024 – Dec 2024. OOS Sharpe of 0.72 is after estimated transaction costs at 5 bps per side. IC of 0.041 is statistically significant (t = 3.2) after Bonferroni correction for 8 candidate specifications tested.</p>
+      </div>
+
+      <!-- Right: sample data + related -->
+      <div>
+        <h3 style="margin-bottom:20px;">Sample Data Preview</h3>
+        <div class="scroll-x" style="margin-bottom:8px;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Ticker</th>
+                <th>Signal</th>
+                <th>Z-Score</th>
+                <th>Return_1M</th>
+                <th>Quintile</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>2024-12-31</td><td>ASSET_0041</td><td class="pos">0.847</td><td class="pos">2.11</td><td class="pos">+3.4%</td><td>Q5</td></tr>
+              <tr><td>2024-12-31</td><td>ASSET_0108</td><td class="pos">0.721</td><td class="pos">1.83</td><td class="pos">+2.9%</td><td>Q5</td></tr>
+              <tr><td>2024-12-31</td><td>ASSET_0239</td><td class="pos">0.612</td><td class="pos">1.54</td><td class="pos">+1.8%</td><td>Q4</td></tr>
+              <tr><td>2024-12-31</td><td>ASSET_0317</td><td>0.104</td><td>0.28</td><td>+0.3%</td><td>Q3</td></tr>
+              <tr><td>2024-12-31</td><td>ASSET_0482</td><td class="neg">-0.228</td><td class="neg">-0.59</td><td class="neg">-1.1%</td><td>Q2</td></tr>
+              <tr><td>2024-12-31</td><td>ASSET_0591</td><td class="neg">-0.614</td><td class="neg">-1.57</td><td class="neg">-2.8%</td><td>Q1</td></tr>
+              <tr><td>2024-12-31</td><td>ASSET_0703</td><td class="neg">-0.839</td><td class="neg">-2.09</td><td class="neg">-4.1%</td><td>Q1</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:.75rem;color:var(--text-muted);margin-bottom:24px;">Synthetic sample data for illustration only. Ticker identifiers are anonymised. Actual subscriber files contain full universe coverage.</p>
+
+        <h4 style="margin-bottom:14px;">Related Factors</h4>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
+          <a href="factor-detail.html?factor=momentum" class="card-flat" style="display:flex;justify-content:space-between;align-items:center;text-decoration:none;">
+            <div>
+              <div style="font-size:.85rem;font-weight:700;color:var(--graphite);">Time-Series Momentum</div>
+              <div style="font-size:.75rem;color:var(--text-muted);">Complementary; diversifying in risk-off</div>
+            </div>
+            <span class="factor-tag momentum">Momentum</span>
+          </a>
+          <a href="factor-detail.html?factor=momentum" class="card-flat" style="display:flex;justify-content:space-between;align-items:center;text-decoration:none;">
+            <div>
+              <div style="font-size:.85rem;font-weight:700;color:var(--graphite);">Multi-Horizon Trend</div>
+              <div style="font-size:.75rem;color:var(--text-muted);">Overlapping signal; futures-focused</div>
+            </div>
+            <span class="factor-tag trend">Trend</span>
+          </a>
+          <a href="factor-detail.html?factor=momentum" class="card-flat" style="display:flex;justify-content:space-between;align-items:center;text-decoration:none;">
+            <div>
+              <div style="font-size:.85rem;font-weight:700;color:var(--graphite);">Short-Term Reversal</div>
+              <div style="font-size:.75rem;color:var(--text-muted);">Inverse signal at 1-month horizon</div>
+            </div>
+            <span class="factor-tag mean-reversion">Mean Reversion</span>
+          </a>
+        </div>
+
+        <h4 style="margin-bottom:14px;">Related Bundle</h4>
+        <div class="card-flat" style="border:1.5px solid var(--blue);background:var(--blue-pale);">
+          <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+            <strong style="font-size:.875rem;">Tactical Factors Bundle</strong>
+            <span class="tfa-badge">Institutional</span>
+          </div>
+          <p style="font-size:.8rem;">This factor is available as part of the Tactical Factors bundle, combined with Carry and Mean Reversion signals.</p>
+          <a href="contact.html" class="btn btn-primary btn-sm mt-4">Inquire for Bundle Access</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">Alpha<span>Factor</span></div>
+        <p class="footer-desc">Institutional-grade factor data, built on empirical validation and academic rigour.</p>
+      </div>
+      <div>
+        <div class="footer-heading">Platform</div>
+        <ul class="footer-links">
+          <li><a href="catalog.html">Factor Catalog</a></li>
+          <li><a href="about.html">Methodology</a></li>
+          <li><a href="blog.html">Research Notes</a></li>
+          <li><a href="login.html">Subscriber Login</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Company</div>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Legal</div>
+        <ul class="footer-links">
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Data Licence</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-legal">© 2025 Alpha Factor Research Ltd. All rights reserved.</span>
+    </div>
+    <p class="footer-disclaimer">All performance statistics shown are from synthetic backtested data for illustrative purposes. Past out-of-sample performance does not guarantee future results.</p>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+// Detect factor from URL and customise page
+const params = new URLSearchParams(window.location.search);
+const factor = params.get('factor') || 'momentum';
+
+const factorConfigs = {
+  momentum: {
+    title: 'Cross-Sectional Momentum',
+    cat: 'Momentum',
+    tag: 'momentum',
+    sharpe: '0.72', ret: '8.4%', ic: '0.041', dd: '-18.3%', vol: '11.6%', calmar: '0.46',
+    chartSeed: 42, chartVol: 0.14, chartRet: 0.085, ddProb: 0.06
+  },
+  value: {
+    title: 'Book-to-Market Ratio',
+    cat: 'Value',
+    tag: 'value',
+    sharpe: '0.51', ret: '5.9%', ic: '0.028', dd: '-14.1%', vol: '11.5%', calmar: '0.42',
+    chartSeed: 77, chartVol: 0.11, chartRet: 0.06, ddProb: 0.04
+  },
+  quality: {
+    title: 'Gross Profitability',
+    cat: 'Quality',
+    tag: 'quality',
+    sharpe: '0.64', ret: '7.1%', ic: '0.035', dd: '-9.8%', vol: '11.1%', calmar: '0.72',
+    chartSeed: 55, chartVol: 0.09, chartRet: 0.072, ddProb: 0.03
+  },
+  carry: {
+    title: 'Cross-Asset Carry',
+    cat: 'Carry',
+    tag: 'carry',
+    sharpe: '0.59', ret: '6.8%', ic: '0.031', dd: '-22.1%', vol: '11.5%', calmar: '0.31',
+    chartSeed: 88, chartVol: 0.12, chartRet: 0.068, ddProb: 0.07
+  },
+  volatility: {
+    title: 'Low Volatility Anomaly',
+    cat: 'Volatility',
+    tag: 'volatility',
+    sharpe: '0.68', ret: '7.5%', ic: '0.038', dd: '-11.2%', vol: '11.0%', calmar: '0.67',
+    chartSeed: 33, chartVol: 0.09, chartRet: 0.075, ddProb: 0.035
+  }
+};
+
+const cfg = factorConfigs[factor] || factorConfigs.momentum;
+
+document.getElementById('factor-title-breadcrumb').textContent = cfg.title;
+document.getElementById('factor-main-title').textContent = cfg.title;
+document.getElementById('factor-tag-label').textContent = cfg.cat;
+document.getElementById('factor-tag-label').className = `factor-tag ${cfg.tag}`;
+document.getElementById('spec-cat').textContent = cfg.cat;
+document.getElementById('stat-sharpe').textContent = cfg.sharpe;
+document.getElementById('stat-ann-ret').textContent = cfg.ret;
+document.getElementById('stat-ic').textContent = cfg.ic;
+document.getElementById('stat-maxdd').textContent = cfg.dd;
+document.getElementById('stat-vol').textContent = cfg.vol;
+document.getElementById('stat-calmar').textContent = cfg.calmar;
+
+// Init charts after layout is ready
+requestAnimationFrame(() => {
+  const xLabels = ['Jan 2023','Apr 2023','Jul 2023','Oct 2023','Jan 2024','Apr 2024','Jul 2024','Oct 2024','Dec 2024'];
+  [
+    { id: 'chart-equity', type: 'equity', seed: cfg.chartSeed, vol: cfg.chartVol, ret: cfg.chartRet, ddProb: cfg.ddProb, xLabels },
+    { id: 'chart-dd', type: 'drawdown', seed: cfg.chartSeed, vol: cfg.chartVol, ret: cfg.chartRet, ddProb: cfg.ddProb, xLabels },
+    { id: 'chart-sharpe', type: 'sharpe', seed: cfg.chartSeed, sharpe: parseFloat(cfg.sharpe), xLabels: ['Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov'] },
+    { id: 'chart-heatmap', type: 'heatmap', seed: cfg.chartSeed, years: 2 },
+    { id: 'chart-spread', type: 'spread', seed: cfg.chartSeed, xLabels },
+    { id: 'chart-turnover', type: 'turnover', seed: cfg.chartSeed },
+  ].forEach(chartCfg => {
+    const canvas = document.getElementById(chartCfg.id);
+    if (canvas) new FactorChartEngine(canvas, chartCfg);
+  });
+});
+</script>
+</body>
+</html>

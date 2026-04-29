@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IC vs. Backtest Returns — Alpha Factor Research Notes</title>
+  <link rel="stylesheet" href="../css/main.css" />
+  <style>
+    .article-body { max-width: 720px; }
+    .article-body h2 { font-size: 1.4rem; margin: 36px 0 14px; }
+    .article-body h3 { font-size: 1.1rem; margin: 28px 0 10px; }
+    .article-body p { margin-bottom: 18px; line-height: 1.8; }
+    .article-body blockquote {
+      border-left: 3px solid var(--blue); padding: 14px 20px;
+      margin: 24px 0; background: var(--blue-pale);
+      font-style: italic; color: var(--graphite-light);
+    }
+    .article-body .formula {
+      font-family: var(--font-mono); font-size: .9rem;
+      background: var(--bg); border: 1px solid var(--border);
+      padding: 14px 18px; border-radius: var(--radius);
+      margin: 20px 0; overflow-x: auto;
+    }
+    .toc { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 32px; }
+    .toc-title { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-muted); margin-bottom: 12px; }
+    .toc ol { padding-left: 20px; }
+    .toc li { font-size: .875rem; margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="../index.html" class="nav-logo">Alpha<span>Factor</span></a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="catalog.html">Factor Data</a>
+      <a href="blog.html" class="active">Research Notes</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html" style="color:var(--text-muted);font-size:.875rem;padding:8px 12px;">Login</a>
+      <a href="contact.html" class="btn btn-primary btn-sm nav-cta">Institutional Inquiry</a>
+    </div>
+  </div>
+</nav>
+
+<section class="section" style="background:var(--white);">
+  <div class="container">
+    <div class="breadcrumb" style="padding-bottom:24px;">
+      <a href="../index.html">Home</a>
+      <span class="breadcrumb-sep">/</span>
+      <a href="blog.html">Research Notes</a>
+      <span class="breadcrumb-sep">/</span>
+      <span style="color:var(--text-muted);">IC vs. Backtest Returns</span>
+    </div>
+    <div style="display:grid;grid-template-columns:2fr 1fr;gap:64px;align-items:start;">
+
+      <!-- Article body -->
+      <article class="article-body">
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:16px;">
+          <span class="factor-tag momentum">Methodology</span>
+          <span class="factor-tag" style="background:var(--blue-pale);color:var(--blue);">Factor Construction</span>
+        </div>
+        <h1 style="font-size:clamp(1.6rem,3vw,2.25rem);margin-bottom:14px;">Why We Report IC Rather Than Backtest Returns</h1>
+        <p style="font-size:.85rem;color:var(--text-muted);margin-bottom:36px;">Alpha Factor Research Team · November 2024 · 8 min read</p>
+
+        <div class="toc">
+          <div class="toc-title">Contents</div>
+          <ol>
+            <li><a href="#">The seductive appeal of Sharpe ratios</a></li>
+            <li><a href="#">What the information coefficient actually measures</a></li>
+            <li><a href="#">IC vs. Sharpe: a conceptual comparison</a></li>
+            <li><a href="#">Limitations of IC as a primary metric</a></li>
+            <li><a href="#">Our reporting standard</a></li>
+          </ol>
+        </div>
+
+        <h2>The Seductive Appeal of Sharpe Ratios</h2>
+        <p>When evaluating a quantitative factor, the most commonly reported statistic is the Sharpe ratio of a backtest constructed over the full available history. This figure is familiar, intuitive, and easy to compare across strategies. It is also, in most contexts, deeply misleading.</p>
+        <p>The fundamental problem is selection bias. If a researcher tests one hundred candidate factor specifications on a given dataset and reports only the one with the highest Sharpe ratio, the expected value of that maximum Sharpe from noise alone is substantially above zero — even if none of the factors contain genuine predictive content. The reported Sharpe overstates the expected performance of the selected factor by a margin that grows with the number of tests conducted.</p>
+        <blockquote>"It is no longer sufficient to merely report a Sharpe ratio; one must also account for the number of trials conducted to produce it." — Harvey, Liu & Zhu (2016)</blockquote>
+        <p>Most factor data providers do not disclose how many candidate specifications were evaluated prior to the release of their published factors. When a Sharpe of 1.4 is presented without this context, the reader has no basis for assessing whether it reflects genuine predictive content or data mining.</p>
+
+        <h2>What the Information Coefficient Actually Measures</h2>
+        <p>The information coefficient (IC) is the Spearman rank correlation between the factor signal and the subsequent realised return across assets at each rebalance period. It measures the factor's contemporaneous predictive content directly, without the confounding effects of portfolio construction rules, leverage, transaction costs, or rebalancing timing.</p>
+        <div class="formula">IC_t = rank_correlation(Signal_t, Return_{t+h})</div>
+        <p>A positive IC indicates that higher-ranked assets (by signal) tend to produce higher subsequent returns — which is precisely what we want a factor signal to achieve. The IC is also less sensitive to extreme observations, being rank-based, and does not depend on the specific portfolio construction methodology applied to the signal.</p>
+
+        <h2>IC vs. Sharpe: A Conceptual Comparison</h2>
+        <p>The Sharpe ratio of a factor backtest conflates two distinct questions: does the signal contain genuine predictive content, and does the specific portfolio constructed from that signal generate risk-adjusted returns after realistic implementation? These are both important questions, but they are different questions. Conflating them makes it difficult to isolate the source of any observed performance advantage.</p>
+        <p>IC addresses the first question. It is a signal-level statistic, not a portfolio-level statistic. A positive and statistically significant IC, computed out-of-sample, is evidence that the signal has predictive content independent of any specific portfolio construction methodology.</p>
+
+        <h2>Limitations of IC as a Primary Metric</h2>
+        <p>We do not suggest that IC is a complete measure of factor quality. IC is an average statistic and can be volatile; IC dispersion (sometimes called ICIR — the ratio of mean IC to the standard deviation of IC) is a better measure of the consistency of a signal's predictive content over time. We report ICIR alongside IC for all factors.</p>
+        <p>Additionally, IC does not account for transaction costs, market impact, or capacity constraints. A signal with a high IC but very high turnover may not be practically exploitable. We address this through our separate turnover and decay documentation.</p>
+
+        <h2>Our Reporting Standard</h2>
+        <p>For every factor we publish, we report:</p>
+        <p>The mean IC and ICIR, computed over the out-of-sample window only. The t-statistic for the mean IC, adjusted using a Bonferroni correction for the number of candidate specifications tested. The Sharpe ratio of a simple long-short portfolio constructed from the top and bottom quintiles of the signal, again computed only in the out-of-sample period. A turnover profile showing average weekly and monthly portfolio turnover. Decay curves showing how IC evolves across holding horizons from daily to annual.</p>
+        <p>We believe this reporting standard gives subscribers a more honest and actionable picture of a factor's predictive content than a headline in-sample Sharpe ratio alone.</p>
+
+        <hr class="divider" />
+        <p style="font-size:.8rem;color:var(--text-muted);">References: Harvey, C.R., Y. Liu, and H. Zhu. "…and the Cross-Section of Expected Returns." Review of Financial Studies 29.1 (2016). Novy-Marx, R. "The Other Side of Value: The Gross Profitability Premium." Journal of Financial Economics 108.1 (2013).</p>
+
+        <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;">
+          <a href="factor-detail.html?factor=momentum" class="btn btn-ghost btn-sm">→ Momentum Tearsheet</a>
+          <a href="about.html" class="btn btn-ghost btn-sm">→ Our Full Methodology</a>
+          <a href="blog.html" class="btn btn-secondary btn-sm">← All Research Notes</a>
+        </div>
+      </article>
+
+      <!-- Sidebar -->
+      <aside style="position:sticky;top:80px;">
+        <div class="card-flat" style="margin-bottom:20px;">
+          <div class="section-label" style="margin-bottom:12px;">Related Factors</div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <a href="factor-detail.html?factor=momentum" style="font-size:.875rem;color:var(--blue);">Cross-Sectional Momentum →</a>
+            <a href="factor-detail.html?factor=value" style="font-size:.875rem;color:var(--blue);">Book-to-Market Ratio →</a>
+            <a href="factor-detail.html?factor=quality" style="font-size:.875rem;color:var(--blue);">Gross Profitability →</a>
+          </div>
+        </div>
+        <div class="card-flat" style="margin-bottom:20px;">
+          <div class="section-label" style="margin-bottom:12px;">More Research Notes</div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div>
+              <a href="blog-article.html" style="font-size:.85rem;font-weight:700;color:var(--graphite);display:block;line-height:1.4;">Walk-Forward Validation: Implementation Notes</a>
+              <span style="font-size:.75rem;color:var(--text-muted);">Oct 2024</span>
+            </div>
+            <div>
+              <a href="blog-article.html" style="font-size:.85rem;font-weight:700;color:var(--graphite);display:block;line-height:1.4;">Momentum Crash Risk and Volatility Conditioning</a>
+              <span style="font-size:.75rem;color:var(--text-muted);">Sep 2024</span>
+            </div>
+            <div>
+              <a href="blog-article.html" style="font-size:.85rem;font-weight:700;color:var(--graphite);display:block;line-height:1.4;">Has the Value Premium Disappeared?</a>
+              <span style="font-size:.75rem;color:var(--text-muted);">Aug 2024</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-flat" style="background:var(--blue-pale);border-color:var(--blue);">
+          <div class="section-label" style="margin-bottom:8px;">Factor Access</div>
+          <p style="font-size:.85rem;margin-bottom:14px;">Subscribe for access to validated factor datasets with full methodology documentation.</p>
+          <a href="contact.html" class="btn btn-primary btn-sm w-full" style="justify-content:center;">View Subscription Plans</a>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">Alpha<span>Factor</span></div>
+        <p class="footer-desc">Institutional-grade factor data, built on empirical validation and academic rigour.</p>
+      </div>
+      <div>
+        <div class="footer-heading">Platform</div>
+        <ul class="footer-links">
+          <li><a href="catalog.html">Factor Catalog</a></li>
+          <li><a href="about.html">Methodology</a></li>
+          <li><a href="blog.html">Research Notes</a></li>
+          <li><a href="login.html">Subscriber Login</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Company</div>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Legal</div>
+        <ul class="footer-links">
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-legal">© 2025 Alpha Factor Research Ltd. All rights reserved.</span>
+    </div>
+    <p class="footer-disclaimer">Research notes are published for educational purposes. Nothing in this content constitutes investment advice.</p>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>
