@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Why We Report IC Rather Than Backtest Returns</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <div class="chrome-bar">
+        <div class="chrome-dots">
+          <div class="cdot c-r"></div>
+          <div class="cdot c-y"></div>
+          <div class="cdot c-g"></div>
+        </div>
+        <div class="chrome-title">alphafactor.io · validated factor research</div>
+      </div>
+      <div class="ticker">
+        <div class="ticker-track">
+          <span>Bitcoin: +1.23%</span>
+          <span>Ethereum: -0.45%</span>
+          <span>SP500: +0.78%</span>
+          <span>Gold: +0.12%</span>
+          <span>US Treasury 10Y: -0.05%</span>
+        </div>
+      </div>
+      <nav class="site-nav">
+        <a class="nav-brand" href="../index.html">
+          <div class="nav-logo">Alpha <span>Factor</span>
+          </div>
+        </a>
+        <div class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="catalog.html">Factor Data</a>
+          <a href="blog.html">Research Notes</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="nav-right">
+          <div class="live-dot">
+            <span class="dot-pulse"></span>
+            <span>LIVE DATA</span>
+          </div>
+          <a class="nav-cta" href="../pages/tear-sheet.html">Tear Sheet</a>
+        </div>
+      </nav>
+      <main>
+        <section class="hero">
+          <div class="container">
+            <div class="hero-panel">
+              <div class="eyebrow">Methodology · Factor Construction</div>
+              <h1 class="page-title">Why We Report IC Rather Than Backtest Returns</h1>
+              <p class="lead">A signal should be judged by how much predictive content it contains, not only by how impressive a portfolio backtest looks after repeated experimentation.</p>
+              <div class="meta-row">
+                <span>Alpha Factor Research Team</span>
+                <span>November 2024</span>
+                <span>8 min read</span>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="container two-col">
+            <article class="panel">
+              <h2>The seductive appeal of Sharpe ratios</h2>
+              <p class="small">When many factor specifications are tested and only the best backtest is published, the reported Sharpe often overstates the true level of predictive content.</p>
+              <p class="small">A signal can look excellent after portfolio construction even when the underlying relationship is weak or unstable. That is why the note argues for a signal-level metric first.</p>
+              <h2 style="margin-top:22px;">What the information coefficient measures</h2>
+              <p class="small">IC is the rank correlation between the signal and the subsequent realised return across assets at each rebalance period. It is easier to interpret, less sensitive to portfolio construction, and more directly tied to the question the signal is supposed to answer.</p>
+              <div class="quote-card" style="margin-top:18px;">
+                <h3>Practical takeaway</h3>
+                <p>A positive, statistically significant IC is evidence that the signal contains predictive content independent of any one portfolio recipe.</p>
+              </div>
+              <h2 style="margin-top:22px;">Our reporting standard</h2>
+              <p class="small">For each factor, we report mean IC, ICIR, an adjusted t-statistic, a simple long-short Sharpe, turnover, and decay curves across holding horizons.</p>
+            </article>
+            <aside class="sidebar">
+              <div class="card sticky">
+                <div class="eyebrow">Contents</div>
+                <div class="toc">
+                  <a href="#">The seductive appeal of Sharpe ratios</a>
+                  <a href="#">What the information coefficient measures</a>
+                  <a href="#">IC vs. Sharpe</a>
+                  <a href="#">Limitations of IC</a>
+                  <a href="#">Our reporting standard</a>
+                </div>
+              </div>
+              <div class="card">
+                <div class="eyebrow">Related pages</div>
+                <div class="btn-row">
+                  <a class="btn-outline" href="catalog.html">Factor catalog</a>
+                  <a class="btn-outline" href="tear-sheet.html">Tear sheet</a>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-grid">
+            <div>
+              <div class="footer-title">Alpha <span>.</span>
+              </div>
+              <div class="footer-tag">Institutional-grade factor data, built on empirical validation and academic rigour.</div>
+            </div>
+            <div class="footer-col">
+              <h4>Platform</h4>
+              <a href="../pages/catalog.html">Factor Catalog</a>
+              <a href="../pages/tear-sheet.html">Tear Sheet</a>
+              <a href="../pages/blog.html">Research Notes</a>
+            </div>
+            <div class="footer-col">
+              <h4>Company</h4>
+              <a href="../pages/about.html">About Us</a>
+              <a href="../pages/about.html#team">Team</a>
+              <a href="../pages/about.html#methodology">Methodology</a>
+            </div>
+            <div class="footer-col">
+              <h4>Legal</h4>
+              <a href="#">Terms of Use</a>
+              <a href="#">Privacy Policy</a>
+              <a href="#">Disclaimer</a>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <div class="footer-copy">© 2026 Alpha Factor Research Ltd. All rights reserved.</div>
+            <div class="footer-disc">Past performance of any factor or portfolio presented on this site does not guarantee future results. All data is provided for informational and research purposes only.</div>
+            <div class="footer-notice">Not investment advice.</div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="../js/main.js"></script>
+  </body>
+</html>

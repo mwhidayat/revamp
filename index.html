@@ -1,305 +1,320 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alpha Factor — Data Built on Rigor</title>
-  <link rel="stylesheet" href="css/main.css" />
-</head>
-<body>
-
-<!-- Navigation -->
-<nav class="nav">
-  <div class="container nav-inner">
-    <a href="index.html" class="nav-logo">Alpha<span>Factor</span></a>
-    <div class="nav-links">
-      <a href="index.html" class="active">Home</a>
-      <a href="pages/about.html">About</a>
-      <a href="pages/catalog.html">Factor Data</a>
-      <a href="pages/blog.html">Research Notes</a>
-      <a href="pages/contact.html">Contact</a>
-      <a href="pages/login.html" style="color:var(--text-muted);font-size:.875rem;padding:8px 12px;">Login</a>
-      <a href="pages/contact.html" class="btn btn-primary btn-sm nav-cta">Institutional Inquiry</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alpha Factor - Data Built on Rigor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <div class="chrome-bar">
+        <div class="chrome-dots">
+          <div class="cdot c-r"></div>
+          <div class="cdot c-y"></div>
+          <div class="cdot c-g"></div>
+        </div>
+        <div class="chrome-title">alphafactor.io · validated factor research</div>
+      </div>
+      <div class="ticker">
+        <div class="ticker-track">
+          <span>Bitcoin: +1.23%</span>
+          <span>Ethereum: -0.45%</span>
+          <span>SP500: +0.78%</span>
+          <span>Gold: +0.12%</span>
+          <span>US Treasury 10Y: -0.05%</span>
+        </div>
+      </div>
+      <nav class="site-nav">
+        <a class="nav-brand" href="index.html">
+          <div class="nav-logo">Alpha <span>Factor</span>
+          </div>
+        </a>
+        <div class="nav-links">
+          <a href="index.html" class="active">Home</a>
+          <a href="pages/about.html">About</a>
+          <a href="pages/catalog.html">Factor Data</a>
+          <a href="pages/blog.html">Research Notes</a>
+          <a href="pages/pricing.html">Pricing</a>
+          <a href="pages/contact.html">Contact</a>
+        </div>
+        <div class="nav-right">
+          <div class="live-dot">
+            <span class="dot-pulse"></span>
+            <span>LIVE DATA</span>
+          </div>
+          <a class="nav-cta" href="pages/tear-sheet.html">Tear Sheet</a>
+        </div>
+      </nav>
+      <main>
+        <section class="hero">
+          <div class="container">
+            <div class="hero-panel">
+              <div class="hero-grid">
+                <div>
+                  <div class="eyebrow">Validated Factor Research</div>
+                  <h1>Data built on <em>rigor</em>, not backtest theatre. </h1>
+                  <p class="lead">Validated factor datasets developed by an independent quantitative research team. Every factor is subjected to out-of-sample testing, decay analysis, and robustness checks before release.</p>
+                  <div class="btn-row">
+                    <a class="btn-primary" href="pages/catalog.html">View Factor Catalog</a>
+                    <a class="btn-outline" href="pages/about.html">Learn the Methodology</a>
+                  </div>
+                  <div class="factor-index" style="margin-top:18px;">
+                    <span class="chip">Out-of-sample validated</span>
+                    <span class="chip">Decay-adjusted signals</span>
+                    <span class="chip">Bonferroni significance</span>
+                    <span class="chip">Reproducible rules</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="value-prop">
+          <div class="container">
+            <div class="section-head">
+              <div>
+                <div class="eyebrow">Our Value Proposition</div>
+                <h2>What we build and why it matters.</h2>
+              </div>
+            </div>
+            <div class="grid-3">
+              <div class="value-card">
+                <div class="eyebrow">Research-Grade Data</div>
+                <p>Our factor datasets are built from clean, high-frequency data and undergo rigorous out-of-sample validation.</p>
+              </div>
+              <div class="value-card">
+                <div class="eyebrow">Transparent Methodology</div>
+                <p>Every rule is fully documented, allowing you to reproduce and audit the signal independently.</p>
+              </div>
+              <div class="value-card">
+                <div class="eyebrow">Actionable Insights</div>
+                <p>We distill complex research into clear, actionable factor signals that can be integrated into portfolio construction.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="portfolio-highlights">
+          <div class="container">
+            <div class="section-head">
+              <div>
+                <div class="eyebrow">Portfolio Highlights</div>
+                <h2>Benchmark vs. Portfolio</h2>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:28px;">
+              <div class="highlight-row" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start;">
+                <div class="highlight-card">
+                  <h3>Maximus</h3>
+                  <table class="highlight-table">
+                    <thead>
+                      <tr>
+                        <th>Metric</th>
+                        <th>Maximus</th>
+                        <th>BTC</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Annual Return</td>
+                        <td>12.4%</td>
+                        <td>8.1%</td>
+                      </tr>
+                      <tr>
+                        <td>Sharpe</td>
+                        <td>1.20</td>
+                        <td>0.65</td>
+                      </tr>
+                      <tr>
+                        <td>Beta</td>
+                        <td>0.85</td>
+                        <td>1.00</td>
+                      </tr>
+                      <tr>
+                        <td>Max Drawdown</td>
+                        <td>-4.2%</td>
+                        <td>-9.5%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="chart-card">
+                  <div class="chart-head">
+                    <h4>Equity Curve (BTC vs. Maximus)</h4>
+                  </div>
+                  <div class="chart-canvas-wrap">
+                    <canvas data-chart='{"type":"line","series":[{"name":"BTC","seed":201,"points":72,"start":100,"drift":0.35,"volatility":1.2,"lineColor":"#E74C3C"},{"name":"Maximus","seed":101,"points":72,"start":100,"drift":0.25,"volatility":0.85,"lineColor":"#0B6E6E"}]}'></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="highlight-row" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start;">
+                <div class="highlight-card">
+                  <h3>Safety Optima</h3>
+                  <table class="highlight-table">
+                    <thead>
+                      <tr>
+                        <th>Metric</th>
+                        <th>Safety Optima</th>
+                        <th>BTC</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Annual Return</td>
+                        <td>9.7%</td>
+                        <td>8.1%</td>
+                      </tr>
+                      <tr>
+                        <td>Sharpe</td>
+                        <td>0.95</td>
+                        <td>0.65</td>
+                      </tr>
+                      <tr>
+                        <td>Beta</td>
+                        <td>0.60</td>
+                        <td>1.00</td>
+                      </tr>
+                      <tr>
+                        <td>Max Drawdown</td>
+                        <td>-2.8%</td>
+                        <td>-9.5%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="chart-card">
+                  <div class="chart-head">
+                    <h4>Equity Curve (BTC vs. Safety Optima)</h4>
+                  </div>
+                  <div class="chart-canvas-wrap">
+                    <canvas data-chart='{"type":"line","series":[{"name":"BTC","seed":202,"points":72,"start":100,"drift":0.35,"volatility":1.2,"lineColor":"#E74C3C"},{"name":"Safety Optima","seed":102,"points":72,"start":100,"drift":0.18,"volatility":0.7,"lineColor":"#16A085"}]}'></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="highlight-row" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start;">
+                <div class="highlight-card">
+                  <h3>Trend Baseline</h3>
+                  <table class="highlight-table">
+                    <thead>
+                      <tr>
+                        <th>Metric</th>
+                        <th>Trend Baseline</th>
+                        <th>BTC</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Annual Return</td>
+                        <td>11.0%</td>
+                        <td>8.1%</td>
+                      </tr>
+                      <tr>
+                        <td>Sharpe</td>
+                        <td>1.05</td>
+                        <td>0.65</td>
+                      </tr>
+                      <tr>
+                        <td>Beta</td>
+                        <td>0.75</td>
+                        <td>1.00</td>
+                      </tr>
+                      <tr>
+                        <td>Max Drawdown</td>
+                        <td>-3.5%</td>
+                        <td>-9.5%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="chart-card">
+                  <div class="chart-head">
+                    <h4>Equity Curve (BTC vs. Trend Baseline)</h4>
+                  </div>
+                  <div class="chart-canvas-wrap">
+                    <canvas data-chart='{"type":"line","series":[{"name":"BTC","seed":203,"points":72,"start":100,"drift":0.35,"volatility":1.2,"lineColor":"#E74C3C"},{"name":"Trend Baseline","seed":103,"points":72,"start":100,"drift":0.22,"volatility":0.9,"lineColor":"#8E44AD"}]}'></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="testimonials">
+          <div class="container">
+            <div class="section-head">
+              <div>
+                <div class="eyebrow">What Our Users Say</div>
+                <h2>Testimonials</h2>
+              </div>
+            </div>
+            <div class="testimonial-grid">
+              <div class="testimonial-card">
+                <p>"Alpha Factor's data gave us a clear edge in our multi-factor strategy. The transparency of the methodology made integration seamless."</p>
+                <div class="testimonial-author">— Jane Doe, Portfolio Manager, XYZ Capital</div>
+              </div>
+              <div class="testimonial-card">
+                <p>"The out-of-sample validation process gives us confidence that the signals will perform in live markets."</p>
+                <div class="testimonial-author">— John Smith, Head of Research, ABC Asset Management</div>
+              </div>
+              <div class="testimonial-card">
+                <p>"Their factor catalog is the most comprehensive and well-documented I've seen. It saved us months of development time."</p>
+                <div class="testimonial-author">— Emily Lee, Quantitative Analyst, DEF Investments</div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="cta-band">
+          <div class="container">
+            <div class="section-head" style="margin-bottom:0;align-items:center;">
+              <div>
+                <div class="eyebrow" style="color:rgba(255,255,255,.72)">Ready to get started?</div>
+                <h2>Contact us or sign up for early access.</h2>
+              </div>
+              <div class="btn-row" style="margin-top:0;">
+                <a class="btn-primary" href="pages/contact.html">Contact Us</a>
+                <a class="btn-outline" href="https://signup.alphafactor.io">Sign Up</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-grid">
+            <div>
+              <div class="footer-title">Alpha <span>.</span>
+              </div>
+              <div class="footer-tag">Institutional-grade factor data, built on empirical validation and academic rigour.</div>
+            </div>
+            <div class="footer-col">
+              <h4>Platform</h4>
+              <a href="pages/catalog.html">Factor Catalog</a>
+              <a href="pages/tear-sheet.html">Tear Sheet</a>
+              <a href="pages/blog.html">Research Notes</a>
+            </div>
+            <div class="footer-col">
+              <h4>Company</h4>
+              <a href="pages/about.html">About Us</a>
+              <a href="pages/about.html#team">Team</a>
+              <a href="pages/about.html#methodology">Methodology</a>
+            </div>
+            <div class="footer-col">
+              <h4>Legal</h4>
+              <a href="#">Terms of Use</a>
+              <a href="#">Privacy Policy</a>
+              <a href="#">Disclaimer</a>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <div class="footer-copy">© 2026 Alpha Factor Research Ltd. All rights reserved.</div>
+            <div class="footer-disc">Past performance of any factor or portfolio presented on this site does not guarantee future results. All data is provided for informational and research purposes only.</div>
+            <div class="footer-notice">Not investment advice.</div>
+          </div>
+        </div>
+      </footer>
     </div>
-  </div>
-</nav>
-
-<!-- Hero -->
-<section class="hero">
-  <div class="container">
-    <div class="hero-content">
-      <div class="hero-eyebrow">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><circle cx="6" cy="6" r="6"/></svg>
-        Quant Research · Validated Factor Data
-      </div>
-      <h1>Data Built on Rigor</h1>
-      <p>Validated factor datasets developed by an independent quantitative research team. Every factor is subjected to out-of-sample testing, decay analysis, and robustness checks before release.</p>
-      <div class="hero-actions">
-        <a href="pages/catalog.html" class="btn btn-primary btn-lg">View Factor Catalog</a>
-        <a href="pages/contact.html" class="btn btn-secondary btn-lg" style="border-color:rgba(255,255,255,0.4);color:#fff;">Inquire for Institutional Access</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Trust Strip -->
-<div class="trust-strip">
-  <div class="container trust-strip-inner">
-    <div class="trust-item">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-      Out-of-Sample Validated
-    </div>
-    <div class="trust-item">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-      Decay-Adjusted Signals
-    </div>
-    <div class="trust-item">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-      Statistical Significance Testing
-    </div>
-    <div class="trust-item">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-      Reproducible Methodology
-    </div>
-    <div class="trust-item">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-      No Backtested Overfit
-    </div>
-  </div>
-</div>
-
-<!-- Research Workflow -->
-<section class="section" style="background:var(--white);">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-label">Methodology</div>
-      <h2 class="section-title">How Every Factor is Built</h2>
-      <p class="section-subtitle">We apply a structured research workflow that eliminates overfitting and ensures statistical credibility before any factor is released.</p>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;">
-      <div class="card-flat" style="display:flex;flex-direction:column;gap:16px;">
-        <div class="step-num" style="width:36px;height:36px;background:var(--blue);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;">01</div>
-        <div>
-          <h4 style="margin-bottom:6px;">Hypothesis Generation</h4>
-          <p style="font-size:.875rem;">Each factor begins with an economic rationale — a testable hypothesis grounded in market structure, investor behaviour, or fundamental accounting relationships. We do not begin with data mining.</p>
-        </div>
-      </div>
-      <div class="card-flat" style="display:flex;flex-direction:column;gap:16px;">
-        <div class="step-num" style="background:var(--blue);">02</div>
-        <div>
-          <h4 style="margin-bottom:6px;">Screening & Construction</h4>
-          <p style="font-size:.875rem;">The factor is constructed on a defined universe with explicit rules for signal computation, neutralisation, and winsorisation. All construction choices are documented prior to testing.</p>
-        </div>
-      </div>
-      <div class="card-flat" style="display:flex;flex-direction:column;gap:16px;">
-        <div class="step-num" style="background:var(--blue);">03</div>
-        <div>
-          <h4 style="margin-bottom:6px;">Out-of-Sample Validation</h4>
-          <p style="font-size:.875rem;">The final model is tested exclusively on held-out data never seen during development. We use sequential, walk-forward splits to prevent data leakage.</p>
-        </div>
-      </div>
-      <div class="card-flat" style="display:flex;flex-direction:column;gap:16px;">
-        <div class="step-num" style="background:var(--blue);">04</div>
-        <div>
-          <h4 style="margin-bottom:6px;">Decay Analysis</h4>
-          <p style="font-size:.875rem;">We measure how quickly each factor's information content decays across holding horizons. Factors with rapid unexplained decay are rejected or flagged for review.</p>
-        </div>
-      </div>
-      <div class="card-flat" style="display:flex;flex-direction:column;gap:16px;">
-        <div class="step-num" style="background:var(--blue);">05</div>
-        <div>
-          <h4 style="margin-bottom:6px;">Robustness Checks</h4>
-          <p style="font-size:.875rem;">Factors are stress-tested across sub-periods, market regimes, and alternative signal specifications. A factor must survive perturbation to qualify for release.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Tier Comparison -->
-<section class="section">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-label">Subscription Plans</div>
-      <h2 class="section-title">Individual & Institutional Access</h2>
-      <p class="section-subtitle">Two delivery tiers designed for different research and operational requirements.</p>
-    </div>
-    <div class="scroll-x">
-      <table class="tier-table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Individual Plan</th>
-            <th class="institutional">Institutional Plan</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Target User</td><td>Retail quants, students, independent traders</td><td>Hedge funds, asset managers, family offices</td></tr>
-          <tr><td>Data Scope</td><td>Selected single factors</td><td>Full catalog + multi-factor bundles</td></tr>
-          <tr><td>Historical Depth</td><td>2 years backtested</td><td>5 years backtested</td></tr>
-          <tr><td>Update Frequency</td><td>Weekly snapshots</td><td>Daily delivery</td></tr>
-          <tr><td>File Formats</td><td>CSV, XLSX, Parquet</td><td>CSV, XLSX, Parquet</td></tr>
-          <tr><td>Delivery Method</td><td>Direct web download</td><td>Web download + SFTP / S3 push</td></tr>
-          <tr><td>Usage Licence</td><td>Personal / single-user</td><td>Commercial / enterprise-wide</td></tr>
-          <tr><td>Support</td><td>Email support</td><td>Researcher Q&amp;A</td></tr>
-          <tr><td>Two-Factor Auth</td><td class="dash">Optional</td><td><span class="check">✓ Mandatory</span></td></tr>
-          <tr>
-            <td></td>
-            <td><a href="pages/contact.html" class="btn btn-secondary btn-sm">Subscribe — Individual</a></td>
-            <td><a href="pages/contact.html" class="btn btn-primary btn-sm">Inquire — Institutional</a></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<!-- Featured Factors -->
-<section class="section" style="background:var(--white);">
-  <div class="container">
-    <div class="section-header">
-      <div class="section-label">Factor Catalog</div>
-      <h2 class="section-title">Featured Factors</h2>
-      <p class="section-subtitle">A selection from our validated factor library. Each factor carries a documented economic rationale and full validation provenance.</p>
-    </div>
-    <div class="grid-3">
-
-      <div class="factor-card">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;">
-          <span class="factor-tag momentum">Momentum</span>
-          <span class="validated-badge">✓ Validated</span>
-        </div>
-        <h3>Cross-Sectional Momentum</h3>
-        <p>Ranks assets by trailing 12-month risk-adjusted returns, skipping the most recent month to avoid short-term reversal contamination.</p>
-        <div class="factor-meta">
-          <div class="factor-meta-item"><strong>Rebalance:</strong> Monthly</div>
-          <div class="factor-meta-item"><strong>Universe:</strong> Large-cap equity</div>
-          <div class="factor-meta-item"><strong>Sharpe (OOS):</strong> 0.72</div>
-        </div>
-        <a href="pages/factor-detail.html?factor=momentum" class="btn btn-ghost btn-sm">View Tearsheet →</a>
-      </div>
-
-      <div class="factor-card">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;">
-          <span class="factor-tag value">Value</span>
-          <span class="validated-badge">✓ Validated</span>
-        </div>
-        <h3>Book-to-Market Ratio</h3>
-        <p>Classic Fama-French value signal using book equity normalised to market capitalisation, with sector-neutral construction to isolate the factor's pure value signal.</p>
-        <div class="factor-meta">
-          <div class="factor-meta-item"><strong>Rebalance:</strong> Quarterly</div>
-          <div class="factor-meta-item"><strong>Universe:</strong> Broad equity</div>
-          <div class="factor-meta-item"><strong>Sharpe (OOS):</strong> 0.51</div>
-        </div>
-        <a href="pages/factor-detail.html?factor=value" class="btn btn-ghost btn-sm">View Tearsheet →</a>
-      </div>
-
-      <div class="factor-card">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;">
-          <span class="factor-tag quality">Quality</span>
-          <span class="validated-badge">✓ Validated</span>
-        </div>
-        <h3>Gross Profitability</h3>
-        <p>Measures gross profit relative to total assets. Empirically associated with persistent excess returns, particularly in growth-style environments. Low turnover signal.</p>
-        <div class="factor-meta">
-          <div class="factor-meta-item"><strong>Rebalance:</strong> Annual</div>
-          <div class="factor-meta-item"><strong>Universe:</strong> Broad equity</div>
-          <div class="factor-meta-item"><strong>Sharpe (OOS):</strong> 0.64</div>
-        </div>
-        <a href="pages/factor-detail.html?factor=quality" class="btn btn-ghost btn-sm">View Tearsheet →</a>
-      </div>
-
-      <div class="factor-card">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;">
-          <span class="factor-tag carry">Carry</span>
-          <span class="validated-badge">✓ Validated</span>
-        </div>
-        <h3>Cross-Asset Carry</h3>
-        <p>Captures the yield differential across asset classes. Constructed from forward-spot ratios in FX and term structure slopes in fixed income. Regime-dependent behaviour documented.</p>
-        <div class="factor-meta">
-          <div class="factor-meta-item"><strong>Rebalance:</strong> Weekly</div>
-          <div class="factor-meta-item"><strong>Universe:</strong> Multi-asset</div>
-          <div class="factor-meta-item"><strong>Sharpe (OOS):</strong> 0.59</div>
-        </div>
-        <a href="pages/factor-detail.html?factor=carry" class="btn btn-ghost btn-sm">View Tearsheet →</a>
-      </div>
-
-      <div class="factor-card">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;">
-          <span class="factor-tag volatility">Volatility</span>
-          <span class="validated-badge">✓ Validated</span>
-        </div>
-        <h3>Low Volatility Anomaly</h3>
-        <p>Systematically overweights assets with lower realised volatility, exploiting the empirically observed inverse relationship between risk and return within equities.</p>
-        <div class="factor-meta">
-          <div class="factor-meta-item"><strong>Rebalance:</strong> Monthly</div>
-          <div class="factor-meta-item"><strong>Universe:</strong> Large-cap equity</div>
-          <div class="factor-meta-item"><strong>Sharpe (OOS):</strong> 0.68</div>
-        </div>
-        <a href="pages/factor-detail.html?factor=volatility" class="btn btn-ghost btn-sm">View Tearsheet →</a>
-      </div>
-
-      <div class="factor-card" style="border:1.5px solid var(--blue);background:var(--blue-pale);">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;">
-          <span class="factor-tag institutional">Institutional Only</span>
-        </div>
-        <h3>Multi-Factor Portfolio — Balanced Composite</h3>
-        <p>A risk-parity weighted combination of our validated momentum, value, quality, and low-volatility signals. Designed for direct portfolio construction use by institutional research teams.</p>
-        <div class="factor-meta">
-          <div class="factor-meta-item"><strong>Rebalance:</strong> Daily</div>
-          <div class="factor-meta-item"><strong>Universe:</strong> Global equity</div>
-        </div>
-        <a href="pages/contact.html" class="btn btn-primary btn-sm">Inquire for Access →</a>
-      </div>
-
-    </div>
-    <div class="mt-8 text-center">
-      <a href="pages/catalog.html" class="btn btn-secondary">Browse Full Factor Catalog</a>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-top">
-      <div>
-        <div class="footer-brand">Alpha<span>Factor</span></div>
-        <p class="footer-desc">Institutional-grade factor data, built on empirical validation and academic rigour.</p>
-      </div>
-      <div>
-        <div class="footer-heading">Platform</div>
-        <ul class="footer-links">
-          <li><a href="pages/catalog.html">Factor Catalog</a></li>
-          <li><a href="pages/about.html">Methodology</a></li>
-          <li><a href="pages/blog.html">Research Notes</a></li>
-          <li><a href="pages/login.html">Subscriber Login</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-heading">Company</div>
-        <ul class="footer-links">
-          <li><a href="pages/about.html">About Us</a></li>
-          <li><a href="pages/contact.html">Contact</a></li>
-          <li><a href="pages/contact.html">Institutional Access</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-heading">Legal</div>
-        <ul class="footer-links">
-          <li><a href="#">Terms of Use</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Data Licence</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span class="footer-legal">© 2025 Alpha Factor Research Ltd. All rights reserved.</span>
-    </div>
-    <p class="footer-disclaimer">Past performance of any factor or portfolio presented on this site does not guarantee future results. All data is provided for informational and research purposes only. Alpha Factor Research Ltd is not a registered investment adviser.</p>
-  </div>
-</footer>
-
-<script src="js/main.js"></script>
-</body>
+    <script src="js/main.js"></script>
+  </body>
 </html>

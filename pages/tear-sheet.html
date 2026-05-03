@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Tear Sheet — Alpha Factor</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet" />
+    <link href="../css/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <div class="chrome-bar">
+        <div class="chrome-dots">
+          <div class="cdot c-r"></div>
+          <div class="cdot c-y"></div>
+          <div class="cdot c-g"></div>
+        </div>
+        <div class="chrome-title">alphafactor.io · validated factor research</div>
+      </div>
+      <div class="ticker">
+        <div class="ticker-track">
+          <span>Bitcoin: +1.23%</span>
+          <span>Ethereum: -0.45%</span>
+          <span>SP500: +0.78%</span>
+          <span>Gold: +0.12%</span>
+          <span>US Treasury 10Y: -0.05%</span>
+        </div>
+      </div>
+      <nav class="site-nav">
+        <a class="nav-brand" href="../index.html">
+          <div class="nav-logo">Alpha <span>Factor</span>
+          </div>
+        </a>
+        <div class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="catalog.html">Factor Data</a>
+          <a href="blog.html">Research Notes</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="nav-right">
+          <div class="live-dot">
+            <span class="dot-pulse"></span>
+            <span>LIVE DATA</span>
+          </div>
+          <a class="nav-cta" href="../pages/tear-sheet.html">Tear Sheet</a>
+        </div>
+      </nav>
+      <main>
+        <section class="hero">
+          <div class="container">
+            <div class="hero-panel">
+              <div class="hero-grid">
+                <div>
+                  <div class="eyebrow">Tear Sheet</div>
+                  <h1>Full explanations, performance summaries, and stacked charts.</h1>
+                  <p class="lead">This page contains the detailed factor write-ups that used to live inside the catalog. The cards below show the complete thesis, construction notes, performance summary, and chart set for each validated factor.</p>
+                  <div class="btn-row">
+                    <a class="btn-primary" href="#factor-momentum">Jump to first factor</a>
+                    <a class="btn-outline" href="catalog.html">Back to catalog</a>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="eyebrow">How to read this page</div>
+                  <p class="small">Each factor uses a single stacked chart column so axes, labels, and annotation blocks remain readable on smaller screens.</p>
+                  <div class="factor-details">
+                    <div class="detail-card">
+                      <h4>Metric focus</h4>
+                      <p>OOS Sharpe, annual return, drawdown, turnover, and IC.</p>
+                    </div>
+                    <div class="detail-card">
+                      <h4>Chart stack</h4>
+                      <p>Equity curve, drawdown, and predictive or regime views.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="section-soft">
+          <div class="container">
+            <div class="summary-grid">
+              <div class="stat-card">
+                <div class="stat-num">
+                  <span class="acc">0.72</span>
+                </div>
+                <div class="stat-lbl">Best Sharpe</div>
+                <div class="stat-desc">Cross-sectional momentum leads on the current out-of-sample window.</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-num">
+                  <span class="acc">-9.8%</span>
+                </div>
+                <div class="stat-lbl">Best drawdown</div>
+                <div class="stat-desc">Gross profitability shows the shallowest drawdown among the set.</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-num">
+                  <span class="acc">2.84</span>
+                </div>
+                <div class="stat-lbl">Best IC t-stat</div>
+                <div class="stat-desc">Momentum has the strongest predictability reading in this release.</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-num">
+                  <span class="acc">5</span>
+                </div>
+                <div class="stat-lbl">Detailed sections</div>
+                <div class="stat-desc">All factor write-ups are collected below for direct comparison.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="factor-momentum">
+          <div class="container">
+            <div class="factor-card">
+              <div class="factor-top">
+                <div class="factor-copy">
+                  <div class="factor-badge">
+                    <span class="badge ok">Validated</span>
+                    <span class="badge">Momentum</span>
+                  </div>
+                  <h3>Cross-Sectional Momentum</h3>
+                  <p>Ranks assets by trailing risk-adjusted returns while skipping the most recent month to reduce short-term reversal noise.</p>
+                  <div class="factor-meta">
+                    <span>Rebalance: Monthly</span>
+                    <span>Universe: Large-cap equity</span>
+                    <span>OOS Sharpe: 0.72</span>
+                    <span>IC t-stat: 2.84</span>
+                  </div>
+                </div>
+                <div class="factor-stats">
+                  <div class="mini-stat">
+                    <div class="value">8.4%</div>
+                    <div class="label">Annual return</div>
+                  </div>
+                  <div class="mini-stat">
+                    <div class="value">18.3%</div>
+                    <div class="label">Max drawdown</div>
+                  </div>
+                  <div class="mini-stat">
+                    <div class="value">42%</div>
+                    <div class="label">Monthly turnover</div>
+                  </div>
+                  <div class="mini-stat">
+                    <div class="value">58.3%</div>
+                    <div class="label">Monthly win rate</div>
+                  </div>
+                </div>
+              </div>
+              <div class="factor-details">
+                <div class="detail-card">
+                  <h4>Factor thesis</h4>
+                  <p>Assets that have outperformed over the intermediate horizon often continue to outperform, especially when the most recent month is excluded to reduce short-term reversal noise.</p>
+                </div>
+                <div class="detail-card">
+                  <h4>Construction note</h4>
+                  <p>Cross-sectional ranking is applied after volatility adjustment and sector neutralisation. The design is simple on purpose: the factor should be easy to explain and difficult to overfit.</p>
+                </div>
+                <div class="detail-card">
+                  <h4>Interpretation</h4>
+                  <p>Momentum remains attractive because it is persistent enough to measure in data, yet not so simple that the signal becomes a pure market beta proxy.</p>
+                </div>
+              </div>
+              <div class="chart-grid">
+                <div class="chart-card">
+                  <div class="chart-head">
+                    <div>
+                      <h4>Equity curve</h4>
+                      <p>Out-of-sample cumulative performance</p>
+                    </div>
+                  </div>
+                  <div class="chart-canvas-wrap">
+                    <canvas data-chart='{"type":"line","seed":11,"points":72,"start":100,"drift":0.26,"volatility":1.3,"fillColor":"rgba(11,110,110,.10)","lineColor":"#0B6E6E"}'></canvas>
+                  </div>
+                </div>
+                <div class="chart-card">
+                  <div class="chart-head">
+                    <div>
+                      <h4>Drawdown</h4>
+                      <p>Depth of peak-to-trough decline</p>
+                    </div>
+                  </div>
+                  <div class="chart-canvas-wrap">
+                    <canvas data-chart='{"type":"line","seed":12,"points":72,"start":0,"drift":-0.08,"volatility":0.95,"fillColor":"rgba(190,50,50,.10)","lineColor":"#BE3232"}'></canvas>
+                  </div>
+                </div>
+                <div class="chart-card">
+                  <div class="chart-head">
+                    <div>
+                      <h4>Predictability</h4>
+                      <p>Monthly information coefficient heatmap</p>
+                    </div>
+                  </div>
+                  <div class="chart-canvas-wrap">
+                    <canvas data-chart='{"type":"heatmap","seed":13,"rows":5}'></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </section>
+        <section id="factor-volatility" style="margin-top:18px;">
+          <div class="container">
+            <div class="factor-card">
+              <div class="factor-top">
+                <div class="factor-copy">
+                  <div class="factor-badge">
+                    <span class="badge ok">Validated</span>
+                    <span class="badge">Volatility</span>
+                  </div>
+                  <h3>Low Volatility</h3>
+                  <p>Ranks assets by inverse realised volatility. The signal is designed for resilience across regimes and typically produces a smoother return profile than higher-beta alternatives.</p>
+                  <div class="factor-meta">
+                    <span>Rebalance: Monthly</span>
+                    <span>Universe: Broad equity</span>
+                    <span>OOS Sharpe: 0.68</span>
+                    <span>IC t-stat: 2.71</span>
+                  </div>
+                </div>
+                <div class="factor-stats">
+                  <div class="mini-stat">
+                    <div class="value">7.5%</div>
+                    <div class="label">Annual return</div>
+                  </div>
+                  <div class="mini-stat">
+                    <div class="value">11.2%</div>
+                    <div class="label">Max drawdown</div>
+                  </div>
+                  <div class="mini-stat">
+                    <div class="value">31%</div>
+                    <div class="label">Monthly turnover</div>
+                  </div>
+                  <div class="mini-stat">
+                    <div class="value">60.4%</div>
+                    <div class="label">Monthly win rate</div>
+                  </div>
+                </div>
+              </div>
+              <div class="factor-details">
+                <div class="detail-card">
+                  <h4>Factor thesis</h4>
+                  <p>Low-risk assets have historically delivered better risk-adjusted returns than their higher-volatility counterparts.</p>
+                </div>
+                <div class="detail-card">
+                  <h4>Construction note</h4>
+                  <p>Realised volatility is measured over a 30-day window and inverted into a ranking signal.</p>
+                </div>
+                <div class="detail-card">
+                  <h4>Interpretation</h4>
+                  <p>The factor behaves as a defensive sleeve and can complement more cyclical signals such as momentum or carry.</p>
+                </div>
+              </div>
+              <div class="chart-grid">
+                <div class="chart-card">
+                  <div class="chart-head">
+                    <div>
+                      <h4>Equity curve</h4>
+                      <p>Out-of-sample cumulative performance</p>
+                    </div>
+                  </div>
+                  <div class="chart-canvas-wrap">
+                    <canvas data-chart='{"type":"line","seed":21,"points":72,"start":100,"drift":0.22,"volatility":0.95,"fillColor":"rgba(11,110,110,.10)","lineColor":"#0B6E6E"}'></canvas>
+                  </div>
+                </div>
+                <div class="chart-card">
+                  <div class="chart-head">
+                    <div>
+                      <h4>Drawdown</h4>
+                      <p>Lower volatility typically compresses extremes</p>
+                    </div>
+                  </div>
+                  <div class="chart-canvas-wrap">
+                    <canvas data-chart='{"type":"line","seed":22,"points":72,"start":0,"drift":-0.05,"volatility":0.75,"fillColor":"rgba(190,50,50,.10)","lineColor":"#BE3232"}'></canvas>
+                  </div>
+                </div>
+                <div class="chart-card">
+                  <div class="chart-head">
+                    <div>
+                      <h4>Regime distribution</h4>
+                      <p>Monthly return skew across recent periods</p>
+                    </div>
+                  </div>
+                  <div class="chart-canvas-wrap">
+                    <canvas data-chart='{"type":"bar","seed":23,"points":24}'></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </section>
+        <section id="factor-quality" style="margin-top:18px;">
+          <div class="container">
+            <div class="factor-card">
+              <div class="factor-top">
+                <div class="factor-copy">
+                  <div class="factor-badge">
+                    <span class="badge ok">Validated</span>
+                    <span class="badge">Quality</span>
+                  </div>
+                  <h3>Gross Profitability</h3>
+                  <p>Measures gross profit relative to assets. This quality signal is economically intuitive, low turnover, and often associated with persistent excess returns in broad equity universes.</p>
+                  <div class="factor-meta">
+                    <span>Rebalance: Annual</span>
+                    <span>Universe: Broad equity</span>
+                    <span>OOS Sharpe: 0.64</span>
+                    <span>IC t-stat: 2.52</span>
+                  </div>
+                </div>
+                <div class="factor-stats">
+                  <div class="mini-stat">
+                    <div class="value">7.1%</div>
+                    <div class="label">Annual return</div>
+                  </div>
+                  <div class="mini-stat">
+                    <div class="value">9.8%</div>
+                    <div class="label">Max drawdown</div>
+                  </div>
+                  <div class="mini-stat">
+                    <div class="value">28%</div>
+                    <div class="label">Monthly turnover</div>
+                  </div>
+                  <div class="mini-stat">
+                    <div class="value">61.2%</div>
+                    <div class="label">Monthly win rate</div>
+                  </div>
+                </div>
+              </div>
+              <div class="factor-details">
+                <div class="detail-card">
+                  <h4>Factor thesis</h4>
+                  <p>Profitable businesses have historically outperformed because earnings quality is a meaningful indicator of durable business strength.</p>
+                </div>
+                <div class="detail-card">
+                  <h4>Construction note</h4>
+                  <p>The signal is built from gross profit scaled by assets to reduce the influence of accounting leverage and capital intensity.</p>
+                </div>
+                <div class="detail-card">
+                  <h4>Interpretation</h4>
+                  <p>Gross profitability is a slower-moving factor and can serve as a stabilising component in multi-factor blends.</p>
+                </div>
+              </div>
+              <div class="chart-grid">
+                <div class="chart-card">
+                  <div class="chart-head">
+                    <div>
+                      <h4>Equity curve</h4>
+                      <p>Long-run signal compounding</p>
+                    </div>
+                  </div>
+                  <div class="chart-canvas-wrap">
+                    <canvas data-chart='{"type":"line","seed":31,"points":72,"start":100,"drift":0.20,"volatility":0.85,"fillColor":"rgba(11,110,110,.10)","lineColor":"#0B6E6E"}'></canvas>
+                  </div>
+                </div>
+                <div class="chart-card">
+                  <div class="chart-head">
+                    <div>
+                      <h4>Drawdown</h4>
+                      <p>Shallow drawdowns reflect lower turnover</p>
+                    </div>
+                  </div>
+                  <div class="chart-canvas-wrap">
+                    <canvas data-chart='{"type":"line","seed":32,"points":72,"start":0,"drift":-0.04,"volatility":0.70,"fillColor":"rgba(190,50,50,.10)","lineColor":"#BE3232"}'></canvas>
+                  </div>
+                </div>
+                <div class="chart-card">
+                  <div class="chart-head">
+                    <div>
+                      <h4>Monthly return profile</h4>
+                      <p>Distribution of monthly outcomes</p>
+                    </div>
+                  </div>
+                  <div class="chart-canvas-wrap">
+                    <canvas data-chart='{"type":"bar","seed":33,"points":24}'></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </section>
+        <section id="factor-carry" style="margin-top:18px;">
+          <div class="container">
+            <div class="factor-card">
+              <div class="factor-top">
+                <div class="factor-copy">
+                  <div class="factor-badge">
+                    <span class="badge ok">Validated</span>
+                    <span class="badge">Carry</span>
+                  </div>
+                  <h3>Cross-Asset Carry</h3>
+                  <p>Captures yield differentials across asset classes. The factor can be attractive in normal conditions, but stress-period performance needs careful monitoring and documentation.</p>
+                  <div class="factor-meta">
+                    <span>Rebalance: Weekly</span>
+                    <span>Universe: Multi-asset</span>
+                    <span>OOS Sharpe: 0.59</span>
+                    <span>IC t-stat: 2.18</span>
+                  </div>
+                </div>
+                <div class="factor-stats">
+                  <div class="mini-stat">
+                    <div class="value">6.8%</div>
+                    <div class="label">Annual return</div>
+                  </div>
+                  <div class="mini-stat">
+                    <div class="value">22.1%</div>
+                    <div class="label">Max drawdown</div>
+                  </div>
+                  <div class="mini-stat">
+                    <div class="value">55%</div>
+                    <div class="label">Monthly turnover</div>
+                  </div>
+                  <div class="mini-stat">
+                    <div class="value">54.2%</div>
+                    <div class="label">Monthly win rate</div>
+                  </div>
+                </div>
+              </div>
+              <div class="factor-details">
+                <div class="detail-card">
+                  <h4>Factor thesis</h4>
+                  <p>Yield differentials can persist because investors demand compensation for inventory, funding, or term-structure risk.</p>
+                </div>
+                <div class="detail-card">
+                  <h4>Construction note</h4>
+                  <p>The signal combines funding-rate differentials and term-structure steepness across assets. It is explicitly regime sensitive.</p>
+                </div>
+                <div class="detail-card">
+                  <h4>Interpretation</h4>
+                  <p>Carry can diversify momentum, but it often needs risk controls when funding conditions invert abruptly.</p>
+                </div>
+              </div>
+              <div class="chart-grid">
+                <div class="chart-card">
+                  <div class="chart-head">
+                    <div>
+                      <h4>Equity curve</h4>
+                      <p>Periodic carry accumulation</p>
+                    </div>
+                  </div>
+                  <div class="chart-canvas-wrap">
+                    <canvas data-chart='{"type":"line","seed":41,"points":72,"start":100,"drift":0.18,"volatility":1.15,"fillColor":"rgba(11,110,110,.10)","lineColor":"#0B6E6E"}'></canvas>
+                  </div>
+                </div>
+                <div class="chart-card">
+                  <div class="chart-head">
+                    <div>
+                      <h4>Drawdown</h4>
+                      <p>Stress periods can be sharp and clustered</p>
+                    </div>
+                  </div>
+                  <div class="chart-canvas-wrap">
+                    <canvas data-chart='{"type":"line","seed":42,"points":72,"start":0,"drift":-0.12,"volatility":1.05,"fillColor":"rgba(190,50,50,.10)","lineColor":"#BE3232"}'></canvas>
+                  </div>
+                </div>
+                <div class="chart-card">
+                  <div class="chart-head">
+                    <div>
+                      <h4>Seasonal pattern</h4>
+                      <p>Monthly carry contribution profile</p>
+                    </div>
+                  </div>
+                  <div class="chart-canvas-wrap">
+                    <canvas data-chart='{"type":"bar","seed":43,"points":24}'></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </section>
+        <section id="factor-tsmomentum" style="margin-top:18px;">
+          <div class="container">
+            <div class="factor-card">
+              <div class="factor-top">
+                <div class="factor-copy">
+                  <div class="factor-badge">
+                    <span class="badge ok">Validated</span>
+                    <span class="badge">Momentum</span>
+                  </div>
+                  <h3>Time-Series Momentum</h3>
+                  <p>Uses the sign of each asset’s own trailing return. It is distinct from cross-sectional momentum and can diversify in risk-off environments.</p>
+                  <div class="factor-meta">
+                    <span>Rebalance: Monthly</span>
+                    <span>Universe: Multi-asset</span>
+                    <span>OOS Sharpe: 0.61</span>
+                    <span>IC t-stat: 2.31</span>
+                  </div>
+                </div>
+                <div class="factor-stats">
+                  <div class="mini-stat">
+                    <div class="value">6.9%</div>
+                    <div class="label">Annual return</div>
+                  </div>
+                  <div class="mini-stat">
+                    <div class="value">15.4%</div>
+                    <div class="label">Max drawdown</div>
+                  </div>
+                  <div class="mini-stat">
+                    <div class="value">38%</div>
+                    <div class="label">Monthly turnover</div>
+                  </div>
+                  <div class="mini-stat">
+                    <div class="value">56.7%</div>
+                    <div class="label">Monthly win rate</div>
+                  </div>
+                </div>
+              </div>
+              <div class="factor-details">
+                <div class="detail-card">
+                  <h4>Factor thesis</h4>
+                  <p>Markets that have been trending upward or downward often continue moving in the same direction over intermediate horizons.</p>
+                </div>
+                <div class="detail-card">
+                  <h4>Construction note</h4>
+                  <p>The sign of trailing 12-month returns is applied independently to each asset. This differs from cross-sectional ranking and can diversify the overall factor stack.</p>
+                </div>
+                <div class="detail-card">
+                  <h4>Interpretation</h4>
+                  <p>Time-series momentum is especially useful as a complement to cross-sectional momentum because the sources of return are related but not identical.</p>
+                </div>
+              </div>
+              <div class="chart-grid">
+                <div class="chart-card">
+                  <div class="chart-head">
+                    <div>
+                      <h4>Equity curve</h4>
+                      <p>Compounding from trend persistence</p>
+                    </div>
+                  </div>
+                  <div class="chart-canvas-wrap">
+                    <canvas data-chart='{"type":"line","seed":51,"points":72,"start":100,"drift":0.19,"volatility":1.05,"fillColor":"rgba(11,110,110,.10)","lineColor":"#0B6E6E"}'></canvas>
+                  </div>
+                </div>
+                <div class="chart-card">
+                  <div class="chart-head">
+                    <div>
+                      <h4>Drawdown</h4>
+                      <p>Moderate but persistent reversals</p>
+                    </div>
+                  </div>
+                  <div class="chart-canvas-wrap">
+                    <canvas data-chart='{"type":"line","seed":52,"points":72,"start":0,"drift":-0.07,"volatility":0.90,"fillColor":"rgba(190,50,50,.10)","lineColor":"#BE3232"}'></canvas>
+                  </div>
+                </div>
+                <div class="chart-card">
+                  <div class="chart-head">
+                    <div>
+                      <h4>Monthly regime view</h4>
+                      <p>Return contribution across recent periods</p>
+                    </div>
+                  </div>
+                  <div class="chart-canvas-wrap">
+                    <canvas data-chart='{"type":"heatmap","seed":53,"rows":5}'></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-grid">
+            <div>
+              <div class="footer-title">Alpha <span>.</span>
+              </div>
+              <div class="footer-tag">Institutional-grade factor data, built on empirical validation and academic rigour.</div>
+            </div>
+            <div class="footer-col">
+              <h4>Platform</h4>
+              <a href="../pages/catalog.html">Factor Catalog</a>
+              <a href="../pages/tear-sheet.html">Tear Sheet</a>
+              <a href="../pages/blog.html">Research Notes</a>
+            </div>
+            <div class="footer-col">
+              <h4>Company</h4>
+              <a href="../pages/about.html">About Us</a>
+              <a href="../pages/about.html#team">Team</a>
+              <a href="../pages/about.html#methodology">Methodology</a>
+            </div>
+            <div class="footer-col">
+              <h4>Legal</h4>
+              <a href="#">Terms of Use</a>
+              <a href="#">Privacy Policy</a>
+              <a href="#">Disclaimer</a>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <div class="footer-copy">© 2026 Alpha Factor Research Ltd. All rights reserved.</div>
+            <div class="footer-disc">Past performance of any factor or portfolio presented on this site does not guarantee future results. All data is provided for informational and research purposes only.</div>
+            <div class="footer-notice">Not investment advice.</div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="../js/main.js"></script>
+  </body>
+</html>

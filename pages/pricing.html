@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing — Alpha Factor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/main.css" />
+  <style>
+    /* ── Pricing-page extras ─────────────────────────────────────────── */
+    .pricing-hero {
+      padding: 80px 0 56px;
+      text-align: center;
+    }
+    .pricing-hero h1 { font-size: clamp(2rem,5vw,3.2rem); margin: 0 0 16px; }
+    .pricing-hero p  { max-width: 560px; margin: 0 auto; opacity: .72; font-size: 1.05rem; }
+
+    /* market toggle */
+    .market-toggle {
+      display: inline-flex;
+      border: 1px solid var(--border, rgba(255,255,255,.14));
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 32px 0 48px;
+    }
+    .market-toggle button {
+      background: none;
+      border: none;
+      padding: 9px 28px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      cursor: pointer;
+      color: inherit;
+      opacity: .55;
+      transition: background .2s, opacity .2s;
+    }
+    .market-toggle button.active {
+      background: var(--accent, #0B6E6E);
+      opacity: 1;
+    }
+
+    /* tier cards grid */
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+    @media (max-width: 900px) { .tier-grid { grid-template-columns: 1fr; } }
+
+    .tier-card {
+      border: 1px solid var(--border, rgba(255,255,255,.12));
+      border-radius: 14px;
+      padding: 36px 32px;
+      position: relative;
+      background: var(--card-bg, rgba(255,255,255,.03));
+      transition: transform .22s, box-shadow .22s;
+    }
+    .tier-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,.35); }
+    .tier-card.featured {
+      border-color: var(--accent, #0B6E6E);
+      background: var(--card-featured, rgba(11,110,110,.10));
+    }
+    .tier-badge {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent, #0B6E6E);
+      color: #fff;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      padding: 4px 14px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    .tier-label {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      opacity: .55;
+      margin-bottom: 8px;
+    }
+    .tier-name { font-size: 1.55rem; font-weight: 700; margin: 0 0 4px; }
+    .tier-market-tag {
+      font-size: .75rem;
+      opacity: .6;
+      margin-bottom: 24px;
+      font-family: 'Space Mono', monospace;
+    }
+
+    .tier-price {
+      margin-bottom: 28px;
+      border-top: 1px solid var(--border, rgba(255,255,255,.1));
+      padding-top: 22px;
+    }
+    .price-value {
+      font-family: 'Space Mono', monospace;
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .price-value.free { color: var(--accent, #0B6E6E); }
+    .price-period { font-size: .8rem; opacity: .55; margin-top: 4px; }
+    .price-idr { font-size: .8rem; opacity: .5; font-family: 'Space Mono', monospace; margin-top: 3px; }
+    .price-idr.hidden, .price-value.hidden { display: none; }
+
+    .tier-specs {
+      list-style: none;
+      margin: 0 0 28px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: .875rem;
+    }
+    .tier-specs li {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border, rgba(255,255,255,.07));
+    }
+    .tier-specs li:last-child { border-bottom: none; padding-bottom: 0; }
+    .spec-label { opacity: .6; flex-shrink: 0; }
+    .spec-val { text-align: right; font-weight: 500; font-family: 'Space Mono', monospace; font-size: .78rem; }
+
+    .tier-capacity {
+      font-size: .75rem;
+      opacity: .5;
+      font-family: 'Space Mono', monospace;
+      margin-bottom: 24px;
+    }
+
+    .btn-tier {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 12px;
+      border-radius: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: .9rem;
+      letter-spacing: .04em;
+      text-decoration: none;
+      transition: opacity .2s, transform .15s;
+    }
+    .btn-tier:hover { opacity: .82; transform: translateY(-1px); }
+    .btn-tier-primary {
+      background: var(--accent, #0B6E6E);
+      color: #fff;
+    }
+    .btn-tier-outline {
+      border: 1.5px solid var(--border, rgba(255,255,255,.22));
+      color: inherit;
+    }
+    .btn-tier-free {
+      background: rgba(255,255,255,.06);
+      color: inherit;
+    }
+
+    /* users row */
+    .tier-users {
+      font-size: .75rem;
+      text-align: center;
+      opacity: .5;
+      margin-top: 12px;
+      font-family: 'Space Mono', monospace;
+    }
+
+    /* feature comparison table */
+    .compare-section { padding: 80px 0 60px; }
+    .compare-section h2 { font-size: 1.7rem; margin-bottom: 32px; }
+    .compare-table { width: 100%; border-collapse: collapse; font-size: .875rem; }
+    .compare-table th, .compare-table td {
+      padding: 13px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border, rgba(255,255,255,.09));
+    }
+    .compare-table th { font-weight: 700; font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; opacity: .55; }
+    .compare-table th:first-child, .compare-table td:first-child { min-width: 200px; }
+    .compare-table td:not(:first-child) { font-family: 'Space Mono', monospace; font-size: .8rem; }
+    .compare-table tr:hover td { background: rgba(255,255,255,.025); }
+    .th-maximus { color: var(--accent, #0B6E6E) !important; opacity: 1 !important; }
+
+    /* tabs for universe / volatility */
+    .spec-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+    .spec-tab {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 4px;
+      padding: 2px 7px;
+      font-size: .7rem;
+      font-family: 'Space Mono', monospace;
+    }
+    .spec-tab.primary { background: var(--accent, #0B6E6E); border-color: transparent; }
+  </style>
+</head>
+<body>
+<div class="site-shell">
+
+  <div class="chrome-bar">
+    <div class="chrome-dots">
+      <div class="cdot c-r"></div>
+      <div class="cdot c-y"></div>
+      <div class="cdot c-g"></div>
+    </div>
+    <div class="chrome-title">alphafactor.io · validated factor research</div>
+  </div>
+
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>Bitcoin: +1.23%</span>
+      <span>Ethereum: -0.45%</span>
+      <span>SP500: +0.78%</span>
+      <span>Gold: +0.12%</span>
+      <span>US Treasury 10Y: -0.05%</span>
+    </div>
+  </div>
+
+  <nav class="site-nav">
+    <a class="nav-brand" href="../index.html">
+      <div class="nav-logo">Alpha <span>Factor</span></div>
+    </a>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="catalog.html">Factor Data</a>
+      <a href="blog.html">Research Notes</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-right">
+      <div class="live-dot">
+        <span class="dot-pulse"></span>
+        <span>LIVE DATA</span>
+      </div>
+      <a class="nav-cta" href="tear-sheet.html">Tear Sheet</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="pricing-hero">
+      <div class="container">
+        <div class="eyebrow">Transparent Pricing</div>
+        <h1>Choose your tier.</h1>
+        <p>From institutional quant desks to independent crypto investors — every tier is built on the same rigorous factor research.</p>
+
+        <div class="market-toggle">
+          <button class="active" id="btn-intl" onclick="setMarket('intl')">International</button>
+          <button id="btn-idn" onclick="setMarket('idn')">Indonesia</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" style="padding-bottom:80px;">
+      <div class="tier-grid">
+
+        <!-- MAXIMUS -->
+        <div class="tier-card featured">
+          <div class="tier-badge">Institutional</div>
+          <div class="tier-label">Tier 1</div>
+          <div class="tier-name">Maximus</div>
+          <div class="tier-market-tag">B2B · Quant / Asset Management / Family Office</div>
+
+          <div class="tier-price">
+            <div class="price-value intl-price">$100,000</div>
+            <div class="price-value idn-price hidden">$100,000</div>
+            <div class="price-idr idn-idr hidden">≈ (IDR equivalent)</div>
+            <div class="price-period">per year · up to 5 exclusive users</div>
+          </div>
+
+          <ul class="tier-specs">
+            <li><span class="spec-label">Universe</span>
+              <span class="spec-val">
+                <div class="spec-tabs">
+                  <span class="spec-tab primary">Top 50</span>
+                  <span class="spec-tab">Top 100</span>
+                  <span class="spec-tab">Top 200</span>
+                  <span class="spec-tab">Top 300</span>
+                </div>
+              </span>
+            </li>
+            <li><span class="spec-label">Sharpe</span><span class="spec-val">2.5 – 3.5</span></li>
+            <li><span class="spec-label">Alpha Return</span><span class="spec-val">100%</span></li>
+            <li><span class="spec-label">Info Coefficient</span><span class="spec-val">1.5</span></li>
+            <li><span class="spec-label">Target Volatility</span>
+              <span class="spec-val">
+                <div class="spec-tabs">
+                  <span class="spec-tab primary">10%</span>
+                  <span class="spec-tab">20%</span>
+                  <span class="spec-tab">30%</span>
+                  <span class="spec-tab">40%</span>
+                </div>
+              </span>
+            </li>
+            <li><span class="spec-label">Rebalancing</span><span class="spec-val">Everyday</span></li>
+            <li><span class="spec-label">Market Risk</span><span class="spec-val">Neutral</span></li>
+            <li><span class="spec-label">Sector Risk</span><span class="spec-val">Neutral</span></li>
+            <li><span class="spec-label">Long-Short</span><span class="spec-val">✓ Yes</span></li>
+            <li><span class="spec-label">Leverage</span><span class="spec-val">✓ Enabled</span></li>
+            <li><span class="spec-label">Timeframe</span><span class="spec-val">Daily</span></li>
+            <li><span class="spec-label">TC Assumption</span><span class="spec-val">0.10%</span></li>
+            <li><span class="spec-label">Exchange</span><span class="spec-val">Binance Perp</span></li>
+          </ul>
+
+          <div class="tier-capacity">Max capacity: $100,000,000</div>
+          <a href="contact.html?tier=maximus" class="btn-tier btn-tier-primary">Request Access</a>
+          <div class="tier-users">Max 5 exclusive users</div>
+        </div>
+
+        <!-- SAFETY OPTIMA -->
+        <div class="tier-card">
+          <div class="tier-label">Tier 2</div>
+          <div class="tier-name">Safety Optima</div>
+          <div class="tier-market-tag">B2C · Retail Crypto Investor</div>
+
+          <div class="tier-price">
+            <div class="price-value intl-price">$2,400</div>
+            <div class="price-value idn-price hidden">Rp 12,000,000</div>
+            <div class="price-idr idn-idr hidden">per year</div>
+            <div class="price-period">per year</div>
+          </div>
+
+          <ul class="tier-specs">
+            <li><span class="spec-label">Universe</span><span class="spec-val">Top 25</span></li>
+            <li><span class="spec-label">Sharpe</span><span class="spec-val">1.5</span></li>
+            <li><span class="spec-label">Alpha Return</span><span class="spec-val">25%</span></li>
+            <li><span class="spec-label">Info Coefficient</span><span class="spec-val">1.0</span></li>
+            <li><span class="spec-label">Target Volatility</span>
+              <span class="spec-val">
+                <div class="spec-tabs">
+                  <span class="spec-tab primary">10%</span>
+                  <span class="spec-tab">15%</span>
+                  <span class="spec-tab">20%</span>
+                </div>
+              </span>
+            </li>
+            <li><span class="spec-label">Rebalancing</span><span class="spec-val">Mon – Sun</span></li>
+            <li><span class="spec-label">Market Risk</span><span class="spec-val">Neutral</span></li>
+            <li><span class="spec-label">Sector Risk</span><span class="spec-val">Follow Risk</span></li>
+            <li><span class="spec-label">Long-Short</span><span class="spec-val">✓ Yes</span></li>
+            <li><span class="spec-label">Leverage</span><span class="spec-val">✗ None</span></li>
+            <li><span class="spec-label">Timeframe</span><span class="spec-val">Weekly</span></li>
+            <li><span class="spec-label">TC Assumption</span><span class="spec-val">0.10%</span></li>
+            <li><span class="spec-label">Exchange</span><span class="spec-val">Binance Perp</span></li>
+          </ul>
+
+          <div class="tier-capacity">Max capacity: $700,000,000</div>
+          <a href="contact.html?tier=safety-optima" class="btn-tier btn-tier-outline">Get Started</a>
+          <div class="tier-users">Up to 1,000 users</div>
+        </div>
+
+        <!-- TREND BASELINE -->
+        <div class="tier-card">
+          <div class="tier-label">Tier 3 · Free</div>
+          <div class="tier-name">Trend Baseline</div>
+          <div class="tier-market-tag">Free · Open Access</div>
+
+          <div class="tier-price">
+            <div class="price-value free">$0</div>
+            <div class="price-period">forever free</div>
+          </div>
+
+          <ul class="tier-specs">
+            <li><span class="spec-label">Universe</span><span class="spec-val">Top 20</span></li>
+            <li><span class="spec-label">Sharpe</span><span class="spec-val">0.7</span></li>
+            <li><span class="spec-label">Alpha Return</span><span class="spec-val">3%</span></li>
+            <li><span class="spec-label">Info Coefficient</span><span class="spec-val">0</span></li>
+            <li><span class="spec-label">Target Volatility</span><span class="spec-val">10%</span></li>
+            <li><span class="spec-label">Rebalancing</span><span class="spec-val">Mon – Sun</span></li>
+            <li><span class="spec-label">Market Risk</span><span class="spec-val">Follow Risk</span></li>
+            <li><span class="spec-label">Sector Risk</span><span class="spec-val">Follow Risk</span></li>
+            <li><span class="spec-label">Long-Short</span><span class="spec-val">✓ Yes</span></li>
+            <li><span class="spec-label">Leverage</span><span class="spec-val">✗ None</span></li>
+            <li><span class="spec-label">Timeframe</span><span class="spec-val">Weekly</span></li>
+            <li><span class="spec-label">TC Assumption</span><span class="spec-val">0.10%</span></li>
+            <li><span class="spec-label">Exchange</span><span class="spec-val">Binance Perp</span></li>
+          </ul>
+
+          <div class="tier-capacity">No capacity limit</div>
+          <a href="contact.html?tier=trend-baseline" class="btn-tier btn-tier-free">Sign Up Free</a>
+          <div class="tier-users">Up to 1,000 users</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Full comparison table -->
+    <section class="compare-section container">
+      <h2>Full Feature Comparison</h2>
+      <div style="overflow-x:auto;">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th class="th-maximus">Maximus</th>
+              <th>Safety Optima</th>
+              <th>Trend Baseline</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Target Market</td><td>B2B Institutional</td><td>B2C Retail</td><td>Free / Public</td></tr>
+            <tr><td>Universe</td><td>Top 50/100/200/300</td><td>Top 25</td><td>Top 20</td></tr>
+            <tr><td>Sharpe Ratio</td><td>2.5 – 3.5</td><td>1.5</td><td>0.7</td></tr>
+            <tr><td>Alpha Return</td><td>100%</td><td>25%</td><td>3%</td></tr>
+            <tr><td>Information Coefficient</td><td>1.5</td><td>1.0</td><td>0</td></tr>
+            <tr><td>Target Volatility</td><td>10% / 20% / 30% / 40%</td><td>10% / 15% / 20%</td><td>10%</td></tr>
+            <tr><td>Rebalancing Day</td><td>Every day</td><td>Mon – Sun</td><td>Mon – Sun</td></tr>
+            <tr><td>Market Risk Neutrality</td><td>Neutral</td><td>Neutral</td><td>Follow Risk</td></tr>
+            <tr><td>Sector Risk Neutrality</td><td>Neutral</td><td>Follow Risk</td><td>Follow Risk</td></tr>
+            <tr><td>Long-Short</td><td>✓</td><td>✓</td><td>✓</td></tr>
+            <tr><td>Leverage</td><td>✓ Enabled</td><td>✗ None</td><td>✗ None</td></tr>
+            <tr><td>Strategy Timeframe</td><td>Daily</td><td>Weekly</td><td>Weekly</td></tr>
+            <tr><td>TC Assumption</td><td>0.10%</td><td>0.10%</td><td>0.10%</td></tr>
+            <tr><td>Exchange</td><td>Binance Perpetual</td><td>Binance Perpetual</td><td>Binance Perpetual</td></tr>
+            <tr><td>Maximum Capacity</td><td>$100,000,000</td><td>$700,000,000</td><td>—</td></tr>
+            <tr><td>Max Users</td><td>5 (exclusive)</td><td>1,000</td><td>1,000</td></tr>
+            <tr><td>Annual Price (Intl)</td><td>$100,000</td><td>$2,400</td><td>$0</td></tr>
+            <tr><td>Annual Price (IDR)</td><td>$100,000</td><td>Rp 12,000,000</td><td>Rp 0</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container">
+        <div class="section-head" style="margin-bottom:0;align-items:center;">
+          <div>
+            <div class="eyebrow" style="color:rgba(255,255,255,.72)">Still have questions?</div>
+            <h2>Talk to the research team.</h2>
+          </div>
+          <div class="btn-row" style="margin-top:0;">
+            <a class="btn-primary" href="contact.html">Contact Us</a>
+            <a class="btn-outline" href="tear-sheet.html">View Tear Sheet</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-title">Alpha <span>.</span></div>
+          <div class="footer-tag">Institutional-grade factor data, built on empirical validation and academic rigour.</div>
+        </div>
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <a href="catalog.html">Factor Catalog</a>
+          <a href="tear-sheet.html">Tear Sheet</a>
+          <a href="blog.html">Research Notes</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="about.html">About Us</a>
+          <a href="about.html#team">Team</a>
+          <a href="about.html#methodology">Methodology</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="#">Terms of Use</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Disclaimer</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">© 2026 Alpha Factor Research Ltd. All rights reserved.</div>
+        <div class="footer-disc">Past performance of any factor or portfolio presented on this site does not guarantee future results. All data is provided for informational and research purposes only.</div>
+        <div class="footer-notice">Not investment advice.</div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+<script src="../js/main.js"></script>
+<script>
+  function setMarket(m) {
+    const isIdn = m === 'idn';
+    document.getElementById('btn-intl').classList.toggle('active', !isIdn);
+    document.getElementById('btn-idn').classList.toggle('active', isIdn);
+    document.querySelectorAll('.intl-price').forEach(el => el.classList.toggle('hidden', isIdn));
+    document.querySelectorAll('.idn-price').forEach(el => el.classList.toggle('hidden', !isIdn));
+    document.querySelectorAll('.idn-idr').forEach(el => el.classList.toggle('hidden', !isIdn));
+  }
+</script>
+</body>
+</html>
